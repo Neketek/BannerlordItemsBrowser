@@ -129,8 +129,11 @@ class Model:
 
             return items
 
-    def load(self, pathes: List[str]):
-        pathes = set(pathes)
+    def load(self, sources: List[str]):
+        pathes = []
+        for path in sources:
+            if path not in pathes:
+                pathes.append(path)
         registry: Dict[str, Item] = dict()
         items: List[Item] = list()
         for path in pathes:
