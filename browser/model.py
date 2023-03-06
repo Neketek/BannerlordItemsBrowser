@@ -12,7 +12,6 @@ import os
 ITEM_NAME_PARSE_RE = re.compile(r"\{=.+\}(.+)")
 SOURCES_FILENAME = "sources.yml"
 
-
 class Item:
 
     id: str
@@ -49,7 +48,7 @@ class Item:
         type = node.attrib.get("Type") or node.attrib.get("crafting_template")
         if type is None:
             raise Exception(f"Can't find item type: {node.attrib['name']}")
-        return type
+        return type[0].capitalize() + type[1:]
 
     @staticmethod
     def parse_material(node: XMLNode):
